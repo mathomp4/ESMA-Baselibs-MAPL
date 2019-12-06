@@ -1,19 +1,3 @@
-#########
-# antlr #
-#########
-
-set(ANTLR_VERSION          2.7.7)
-set(ANTLR_URL              http://dust.ess.uci.edu/nco/antlr-${ANTLR_VERSION}.tar.gz)
-set(ANTLR_HASH             SHA512=130b5d7ea676f28f75fe75da9b5e11caf6d6c92f51e33ff80a9f624735c8da8a3d62a2ef7e86a6812c932984fa56525388124d9314c0a6bd418ab97b078d85cb)
-
-#######
-# GSL #
-#######
-
-set(GSL_VERSION            2.6)
-set(GSL_URL                http://mirrors.ibiblio.org/gnu/ftp/gnu/gsl/gsl-${GSL_VERSION}.tar.gz)
-set(GSL_HASH               SHA512=0be8240715f0b86aba2c63d9f12da4dba4719d4e350e9308d279e0dd3b2f0519ea26fd2e38a17f3e8cf43aacbaa2455207a7ca0d6c305f3b8725e8ece2250a74)
-
 ########
 # jpeg #
 ########
@@ -37,14 +21,6 @@ set(ZLIB_HASH              SHA512=73fd3fff4adeccd4894084c15ddac89890cd10ef105dd5
 set(SZIP_VERSION           2.1.1)
 set(SZIP_URL               https://support.hdfgroup.org/ftp/lib-external/szip/${SZIP_VERSION}/src/szip-${SZIP_VERSION}.tar.gz)
 set(SZIP_HASH              SHA512=ada6406efb096cd8a2daf8f9217fe9111a96dcae87e29d1c31f58ddd2ad2aa7bac03f23c7205dc9360f3b62d259461759330c7189ef0c2fe559704b1ea9d40dd)
-
-########
-# cURL #
-########
-
-set(CURL_VERSION           7.67.0)
-set(CURL_URL               https://curl.haxx.se/download/curl-${CURL_VERSION}.tar.xz)
-set(CURL_HASH              SHA512=1d5a344be92dd61b1ba5189eff0fe337e492f2e850794943570fe71c985d0af60bd412082be646e07aaa8639908593e1ce4bb2d07db35394ec377e8ce8b9ae29)
 
 ########
 # HDF4 #
@@ -78,14 +54,6 @@ set(NETCDF_HASH            SHA512=f2e4d003819884b0222f0441705b3de7a455936803949c
 set(NETCDF_FORTRAN_VERSION 4.5.2)
 set(NETCDF_FORTRAN_URL     https://github.com/Unidata/netcdf-fortran/archive/v${NETCDF_FORTRAN_VERSION}.tar.gz)
 set(NETCDF_FORTRAN_HASH    SHA512=d9f5463ee31dab62d5a1b2feb0c780c344978f179237cd23f92ea32a4b400910a66a9ac4e446be734166ecc7578ef25a7183b4444926a6f386d9a5e02d1cf4f6)
-
-###############
-# netcdf-CXX4 #
-###############
-
-set(NETCDF_CXX4_VERSION    4.3.1)
-set(NETCDF_CXX4_URL        https://github.com/Unidata/netcdf-cxx4/archive/v${NETCDF_CXX4_VERSION}.tar.gz)
-set(NETCDF_CXX4_HASH       SHA512=404711eb80d5e78968c0f6cbdcb08855a2778d7fd94e7ee94bdc9d1cd72848ac3327613c6437a7634349f26bc463b950092a2999abb34ddab0a47ad185547d22)
 
 ########
 # FLAP #
@@ -127,14 +95,6 @@ set(FARGPARSE_VERSION      v0.9.1)
 set(FARGPARSE_URL          https://github.com/Goddard-Fortran-Ecosystem/fArgParse/archive/${FARGPARSE_VERSION}.tar.gz)
 set(FARGPARSE_HASH         SHA512=68014f914e42565bdfcf7bc19ce2df0ec9e28760dda42e6c6763425ac9bebba9ee1fe5d2e73e98ce62adb81bb8db011b983a9b606a6fc8671d61cb5ed58c56a3)
 
-#######
-# NCO #
-#######
-
-set(NCO_VERSION            4.8.1)
-set(NCO_URL                https://github.com/nco/nco/archive/${NCO_VERSION}.tar.gz)
-set(NCO_HASH               SHA512=16e3849eaaa28c729465099c8dbccc553a0ee6a153552763be2194e49351b18b5649b8463fde7ff05654cb5a17f0aecfb9ffff0eeaac852282861fb52878959e)
-
 ########
 # ESMF #
 ########
@@ -142,52 +102,3 @@ set(NCO_HASH               SHA512=16e3849eaaa28c729465099c8dbccc553a0ee6a1535527
 #set(ESMF_VERSION )
 #set(ESMF_URL )
 #set(ESMF_HASH SHA512= )
-
-############
-# UDUNITS2 #
-############
-
-set(UDUNITS2_VERSION       2.2.26)
-set(UDUNITS2_URL           ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-${UDUNITS2_VERSION}.tar.gz)
-set(UDUNITS2_HASH          SHA512=9e5320454646458ac40ba0855b6b8e12f7edbdb4b9a6c687a4c38ad07400e2e0c0f7968069885f83eb73da64886e1c6dd1e462ebc23205df849c3a460cedb640)
-
-#######
-# CDO #
-#######
-
-set(CDO_VERSION            1.9.8)
-set(CDO_ODDITY             20826)
-set(CDO_URL                https://code.mpimet.mpg.de/attachments/download/${CDO_ODDITY}/cdo-${CDO_VERSION}.tar.gz)
-set(CDO_HASH               SHA512=05bcaac5971dbcb5b3169b0ebf0939f2d727b0506beaee8364282d27fac03046dbc130241ec2501e8b261349365096f79bbbdb9bd67aae4488baea8c1343d2b2)
-
-#########
-# nccmp #
-#########
-
-set(NCCMP_VERSION          1.8.5.0)
-set(NCCMP_URL              https://gitlab.com/remikz/nccmp/-/archive/${NCCMP_VERSION}/nccmp-${NCCMP_VERSION}.tar.bz2)
-set(NCCMP_HASH             SHA512=7c243a9ff4a33dae5224fd9cb7b5fa8954ea55677c85ed7478ccf071eed63c96ddc4f03be08f0fd0646dfb10b9615696198ecbb003d522cc186fe9dc60283846)
-
-############
-# HDF-EOS2 #
-############
-
-set(HDFEOS_VERSION         2.20v1.00)
-set(HDFEOS_URL             https://observer.gsfc.nasa.gov/ftp/edhs/hdfeos/latest_release/HDF-EOS${HDFEOS_VERSION}.tar.Z)
-set(HDFEOS_HASH            SHA512=9ca7cf96d7357c02e82e9290aed5343fdbf27afcbaa755794fbf51f5f27ce3f02e6d9e15a69ced4136d5e9e2610448cc720af049430cd26e37c194983717400a)
-
-############
-# HDF-EOS5 #
-############
-
-set(HDFEOS5_VERSION        5.1.16)
-set(HDFEOS5_URL            https://observer.gsfc.nasa.gov/ftp/edhs/hdfeos5/latest_release/HDF-EOS${HDFEOS5_VERSION}.tar.Z)
-set(HDFEOS5_HASH           SHA512=d6576ef796903c7df97edc8f6ae8641c08dec7342f36c7a6ece361f696a7543281bbd7485fc47562a300b0bad87289e25322812bb6997d0191639eb5688424a8)
-
-###############
-# SDP Toolkit #
-###############
-
-set(SDPTK_VERSION          5.2.20v1.01)
-set(SDPTK_URL              https://observer.gsfc.nasa.gov/ftp/edhs/sdptk/latest_release/SDPTK${SDPTOOLKIT_VERSION}.tar.Z)
-set(SDPTK_HASH             SHA512=446b3976dd4f21af5ea421dc325d6c8edbb8ea5178e02d37572b143726c0367740d2b07ef48120a5bd31ef700a34c34138f89c21215a921ce877cefbdf159d98)

@@ -7,34 +7,38 @@ include(SetColors)
 
 # Try to make good guesses
 # ------------------------
-if(ESMF_COMPILER STREQUAL "intel")
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME ifort)
-elseif(ESMF_COMPILER STREQUAL "intelgcc")
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME ifort)
-   set(DEFAULT_INSTALL_C_COMPILER_NAME gcc)
-elseif(ESMF_COMPILER STREQUAL "pgi")
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME pgfortran)
-elseif(ESMF_COMPILER STREQUAL "pgigcc")
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME pgfortran)
-   set(DEFAULT_INSTALL_C_COMPILER_NAME gcc)
-elseif(ESMF_COMPILER STREQUAL "gnu")
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME gfortran)
-elseif(ESMF_COMPILER STREQUAL "nag")
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME nagfor)
-elseif(ESMF_COMPILER STREQUAL "nagintel")
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME nagfor)
-   set(DEFAULT_INSTALL_C_COMPILER_NAME icc)
-else()
-   set(DEFAULT_INSTALL_Fortran_COMPILER_NAME ${ESMF_COMPILER})
+if(DETECTED_ESMF_COMPILER)
+   if(ESMF_COMPILER STREQUAL "intel")
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME ifort)
+   elseif(ESMF_COMPILER STREQUAL "intelgcc")
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME ifort)
+      set(DEFAULT_INSTALL_C_COMPILER_NAME gcc)
+   elseif(ESMF_COMPILER STREQUAL "pgi")
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME pgfortran)
+   elseif(ESMF_COMPILER STREQUAL "pgigcc")
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME pgfortran)
+      set(DEFAULT_INSTALL_C_COMPILER_NAME gcc)
+   elseif(ESMF_COMPILER STREQUAL "gnu")
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME gfortran)
+   elseif(ESMF_COMPILER STREQUAL "nag")
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME nagfor)
+   elseif(ESMF_COMPILER STREQUAL "nagintel")
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME nagfor)
+      set(DEFAULT_INSTALL_C_COMPILER_NAME icc)
+   else()
+      set(DEFAULT_INSTALL_Fortran_COMPILER_NAME ${ESMF_COMPILER})
+   endif()
 endif()
 
-if(DEFAULT_INSTALL_C_COMPILER_NAME)
+if(NOT DETECTED_ESMF_COMPILER)
+   set(INSTALL_COMPILER_NAME ${ESMF_COMPILER})
+elseif(DEFAULT_INSTALL_C_COMPILER_NAME)
    set(INSTALL_COMPILER_NAME ${DEFAULT_INSTALL_Fortran_COMPILER_NAME}_${CMAKE_Fortran_COMPILER_VERSION}-${DEFAULT_INSTALL_C_COMPILER_NAME}_${CMAKE_C_COMPILER_VERSION})
 else()
    set(INSTALL_COMPILER_NAME ${DEFAULT_INSTALL_Fortran_COMPILER_NAME}_${CMAKE_Fortran_COMPILER_VERSION})
 endif()
 
-if(ESMF_COMM STREQUAL "mpiuni")
+if("${DETECTED_MPI_VERSION_STRING}" STREQUAL "")
    set(INSTALL_MPI_NAME ${ESMF_COMM})
 else ()
    set(INSTALL_MPI_NAME ${ESMF_COMM}_${DETECTED_MPI_VERSION_STRING})
@@ -52,14 +56,14 @@ else()
    get_filename_component(LAST_DIR_NODE ${CMAKE_INSTALL_PREFIX} NAME)
    #message(STATUS "LAST_DIR_NODE: ${LAST_DIR_NODE}")
    if (NOT LAST_DIR_NODE STREQUAL ${CMAKE_SYSTEM_NAME})
-      message(FATAL_ERROR 
+      message(WARNING 
          "Due to current scripting limitations in GEOS, the last node of the Baselibs installation must\
-         match the CMAKE_SYSTEM_NAME (aka 'uname -s') which for this machine is ${BoldYellow}${CMAKE_SYSTEM_NAME}${ColorReset}\
-         Please change your CMAKE_INSTALL_PREFIX so that the last folder in the directory\
-         path is ${BoldYellow}${CMAKE_SYSTEM_NAME}${ColorReset} a la:
-         ${BoldWhite}${CMAKE_INSTALL_PREFIX}/${CMAKE_SYSTEM_NAME}${ColorReset}
+         match the CMAKE_SYSTEM_NAME (aka 'uname -s') which for this machine is ${BoldYellow}${CMAKE_SYSTEM_NAME}${ColorReset}.\
+         CMake will change your CMAKE_INSTALL_PREFIX so that the last folder in the directory\
+         path is ${BoldYellow}${CMAKE_SYSTEM_NAME}${ColorReset}.
          "
          )
+      set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/${CMAKE_SYSTEM_NAME}")
    endif ()
    message (STATUS "Installing to ${BoldYellow}${CMAKE_INSTALL_PREFIX}${ColorReset}")
 endif()

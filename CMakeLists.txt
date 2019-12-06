@@ -25,7 +25,7 @@ include(GetEnvironmentModules)
 add_subdirectory(etc)
 
 option(BUILD_MPI  "Build with MPI" ON)
-option(BUILD_ESMF "Build ESMF"     OFF)
+option(BUILD_ESMF "Build ESMF"     ON)
 
 set(SERIAL_C_COMPILER       ${CMAKE_C_COMPILER})
 set(SERIAL_CXX_COMPILER     ${CMAKE_CXX_COMPILER})
@@ -66,6 +66,9 @@ endif ()
 
 include(DetermineESMFCOMM)
 include(DetermineESMFCOMPILER)
+set (ESMF_BOPT "O" CACHE STRING "ESMF Optimization Level")
+message(STATUS "Using ESMF_BOPT: ${ESMF_BOPT}")
+
 include(InstallDirectoryCheck)
 
 set(H4_C_COMPILER       ${CMAKE_INSTALL_PREFIX}/bin/h4cc-hdf4)
@@ -485,7 +488,7 @@ ExternalProject_Add(netcdf-fortran
 
 FetchContent_Declare(flap
    GIT_REPOSITORY https://github.com/mathomp4/FLAP.git
-   GIT_TAG        geos/v1.4.0
+   GIT_TAG        geos/v1.5.0
    GIT_SHALLOW    TRUE
    GIT_PROGRESS   TRUE
 )
@@ -669,9 +672,8 @@ if (BUILD_ESMF)
 
    FetchContent_Declare(esmf
       GIT_REPOSITORY https://git.code.sf.net/p/esmf/esmf
-      GIT_TAG ESMF_8_0_1_beta_snapshot_02
-      GIT_SHALLOW TRUE
-      GIT_PROGRESS TRUE
+      GIT_TAG        master
+      GIT_PROGRESS   TRUE
    )
    FetchContent_GetProperties(esmf)
    if(NOT esmf_POPULATED)
@@ -693,6 +695,7 @@ if (BUILD_ESMF)
          ESMF_INSTALL_BINDIR=<INSTALL_DIR>/bin
          ESMF_COMPILER=${ESMF_COMPILER}
          ESMF_COMM=${ESMF_COMM}
+         ESMF_BOPT=${ESMF_BOPT}
          ESMF_NETCDF=split
          ESMF_NETCDF_INCLUDE=<INSTALL_DIR>/include/netcdf
          ESMF_NETCDF_LIBPATH=<INSTALL_DIR>/lib
@@ -710,6 +713,7 @@ if (BUILD_ESMF)
          ESMF_INSTALL_BINDIR=<INSTALL_DIR>/bin
          ESMF_COMPILER=${ESMF_COMPILER}
          ESMF_COMM=${ESMF_COMM}
+         ESMF_BOPT=${ESMF_BOPT}
          ESMF_NETCDF=split
          ESMF_NETCDF_INCLUDE=<INSTALL_DIR>/include/netcdf
          ESMF_NETCDF_LIBPATH=<INSTALL_DIR>/lib

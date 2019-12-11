@@ -83,9 +83,9 @@ set(GFTL_SHARED_HASH       SHA512=b57a9adc535be760d56174a129568346ac26b914c08dcd
 # pFUnit #
 ##########
 
-set(PFUNIT_VERSION         v4.1.1)
+set(PFUNIT_VERSION         v4.1.3)
 set(PFUNIT_URL             https://github.com/Goddard-Fortran-Ecosystem/pFUnit/archive/${PFUNIT_VERSION}.tar.gz)
-set(PFUNIT_HASH            SHA512=f853e00af2af5ebeeb5e23a39a6eb3df45ee525b305a9472c5ac04ab3038ce22adca312116eb3e5fe4e486dbcc72d953c81d397bdfc649a935a2566c0fc00b91)
+set(PFUNIT_HASH            SHA512=299661a1faee65763873de3f3b2f20b71395fd5de8f6c7d165c0154a331602fef96935777baa7440979cea2521b5ce3035fd8ad43be9ca8dc7b754dcb458aa09)
 
 #############
 # fArgParse #

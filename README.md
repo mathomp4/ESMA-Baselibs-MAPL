@@ -52,14 +52,14 @@ compiler and MPI stack and will set `ESMF_BOPT=O`.
 | Library                                                                 | Version |
 | ---                                                                     | ---     |
 | [ESMF](https://www.earthsystemcog.org/projects/esmf/)                   | master  |
-| [netCDF](https://github.com/Unidata/netcdf-c)                           | 4.7.2   |
+| [netCDF](https://github.com/Unidata/netcdf-c)                           | 4.7.3   |
 | [netCDF Fortran](https://github.com/Unidata/netcdf-fortran)             | 4.5.2   |
-| [HDF5](https://portal.hdfgroup.org/display/support)                     | 1.10.5  |
+| [HDF5](https://portal.hdfgroup.org/display/support)                     | 1.10.6  |
 | [HDF4](https://portal.hdfgroup.org/display/support)                     | 4.2.14  |
-| [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)           | v4.1.1  |
+| [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)           | v4.1.5  |
 | [gFTL](https://github.com/Goddard-Fortran-Ecosystem/gFTL)               | v1.2.2  |
 | [gFTL-shared](https://github.com/Goddard-Fortran-Ecosystem/gFTL-shared) | v1.0.2  |
-| [fArgParse](https://github.com/Goddard-Fortran-Ecosystem/fArgParse)     | v0.9.1  |
+| [fArgParse](https://github.com/Goddard-Fortran-Ecosystem/fArgParse)     | v0.9.2  |
 | [jpeg](http://www.ijg.org/)                                             | 9c      |
 | [zlib](http://www.zlib.net/)                                            | 1.2.11  |
 | [szip](https://support.hdfgroup.org/doc_resource/SZIP/)                 | 2.1.1   |

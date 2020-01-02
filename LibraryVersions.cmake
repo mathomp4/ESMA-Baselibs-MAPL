@@ -35,17 +35,17 @@ set(HDF4_HASH              SHA512=d742743a8b4c1947011e397bc4e5d2445ffb0f92cfe4b8
 ########
 
 set(HDF5_MMVERSION         1.10)
-set(HDF5_VERSION           1.10.5)
+set(HDF5_VERSION           1.10.6)
 set(HDF5_URL               https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${HDF5_MMVERSION}/hdf5-${HDF5_VERSION}/src/hdf5-${HDF5_VERSION}.tar.gz)
-set(HDF5_HASH              SHA512=f828ee9d63533effe1ad358230e5ce7b64c5016e49291d9533575f713cbfba496290fc0151fd9617898bdf36785984ddb38a9207f529d7702d4e23838fe050d8)
+set(HDF5_HASH              SHA512=7667e65194b13df47cbc66fa36ff9aca02d65f8b96a0a5dd91af6932062aaff7a048b29df3b3664ec75aa75ddd531f3d03e3b171e2eb30ff0d8b0f9a647b0f41)
 
 ############
 # netCDF-C #
 ############
 
-set(NETCDF_VERSION         4.7.2)
+set(NETCDF_VERSION         4.7.3)
 set(NETCDF_URL             https://github.com/Unidata/netcdf-c/archive/v${NETCDF_VERSION}.tar.gz)
-set(NETCDF_HASH            SHA512=f2e4d003819884b0222f0441705b3de7a455936803949c12d30d401a653e7ee2b510b0c8374be80271ca57d3980955f9ccc5f064063b654442225ae971f20a93)
+set(NETCDF_HASH            SHA512=5cef5b3499b230b503f87d99cbf5d1ef107550f81489d9be6bb64740692fdd6f967f95f6cb2ab6174d968ee77a08a4e5f3f9d401b2ebc6b482c0e7ded6036f7a)
 
 ##################
 # netcdf-Fortran #
@@ -59,9 +59,9 @@ set(NETCDF_FORTRAN_HASH    SHA512=d9f5463ee31dab62d5a1b2feb0c780c344978f179237cd
 # FLAP #
 ########
 
-set(FLAP_VERSION           geos/v1.4.0 )
+set(FLAP_VERSION           geos/v1.5.0 )
 set(FLAP_URL               https://github.com/mathomp4/FLAP/archive/${FLAP_VERSION}.tar.gz)
-set(FLAP_HASH              SHA512=ee3170853f6f598a4d40c348697eb3b61cdc602a9be782fe18aeb420bb984564986c75a362153ba494a521dbd887c77767d11b1e3416f7a00cca74b52e66715d)
+set(FLAP_HASH              SHA512=18ed3b740ff1bba31949739203f12370ac1f9f1e17282d7bacc7871ca4bf1c6233298e6e7e87227d59e0f99677c6c7fe80a7a2ce71d5b370947d2aff409cd27e)
 
 ########
 # gFTL #
@@ -83,17 +83,18 @@ set(GFTL_SHARED_HASH       SHA512=b57a9adc535be760d56174a129568346ac26b914c08dcd
 # pFUnit #
 ##########
 
-set(PFUNIT_VERSION         v4.1.3)
+set(PFUNIT_VERSION         v4.1.5)
 set(PFUNIT_URL             https://github.com/Goddard-Fortran-Ecosystem/pFUnit/archive/${PFUNIT_VERSION}.tar.gz)
-set(PFUNIT_HASH            SHA512=299661a1faee65763873de3f3b2f20b71395fd5de8f6c7d165c0154a331602fef96935777baa7440979cea2521b5ce3035fd8ad43be9ca8dc7b754dcb458aa09)
+set(PFUNIT_HASH            SHA512=cb781fcab490721f9e2e91bc4f86678d293e4be0e3a8335878ee41812cab6b131a9b2cec3df0d858d3a5d3a49ff644e1f993dc08fc4385c520b249073384496d)
 
 #############
 # fArgParse #
 #############
 
-set(FARGPARSE_VERSION      v0.9.1)
+set(FARGPARSE_VERSION      v0.9.2)
 set(FARGPARSE_URL          https://github.com/Goddard-Fortran-Ecosystem/fArgParse/archive/${FARGPARSE_VERSION}.tar.gz)
-set(FARGPARSE_HASH         SHA512=68014f914e42565bdfcf7bc19ce2df0ec9e28760dda42e6c6763425ac9bebba9ee1fe5d2e73e98ce62adb81bb8db011b983a9b606a6fc8671d61cb5ed58c56a3)
+set(FARGPARSE_HASH         SHA512=44b7df0b669ad52c5e131b3a6061294b928bbaeafe3b40721a75c8fa0423cb98e4b60689ff9a433b7b70d090c2516d5c4eef8582ad8053ae7b5572c5146d0a9d)
+
 
 ########
 # ESMF #

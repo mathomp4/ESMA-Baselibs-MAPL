@@ -749,7 +749,7 @@ if (BUILD_ESMF)
    ########
 
    FetchContent_Declare(esmf
-      GIT_REPOSITORY https://git.code.sf.net/p/esmf/esmf
+      GIT_REPOSITORY https://github.com/esmf-org/esmf.git
       GIT_TAG        master
       GIT_PROGRESS   TRUE
    )

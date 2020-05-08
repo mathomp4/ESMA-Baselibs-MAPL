@@ -43,9 +43,9 @@ set(HDF5_HASH              SHA512=7667e65194b13df47cbc66fa36ff9aca02d65f8b96a0a5
 # netCDF-C #
 ############
 
-set(NETCDF_VERSION         4.7.3)
+set(NETCDF_VERSION         4.7.4)
 set(NETCDF_URL             https://github.com/Unidata/netcdf-c/archive/v${NETCDF_VERSION}.tar.gz)
-set(NETCDF_HASH            SHA512=5cef5b3499b230b503f87d99cbf5d1ef107550f81489d9be6bb64740692fdd6f967f95f6cb2ab6174d968ee77a08a4e5f3f9d401b2ebc6b482c0e7ded6036f7a)
+set(NETCDF_HASH            SHA512=15922818fdd71be285eb7dd2fc9be2594fe9af979de3ed316465636c7bbdaec65eb151ca57ef8b703e6a360cdba036b8f9bc193ddff01ff7ce4214c0a66efa79)
 
 ##################
 # netcdf-Fortran #
@@ -59,9 +59,9 @@ set(NETCDF_FORTRAN_HASH    SHA512=d9f5463ee31dab62d5a1b2feb0c780c344978f179237cd
 # FLAP #
 ########
 
-set(FLAP_VERSION           geos/v1.5.0 )
+set(FLAP_VERSION           geos/v1.9.0 )
 set(FLAP_URL               https://github.com/mathomp4/FLAP/archive/${FLAP_VERSION}.tar.gz)
-set(FLAP_HASH              SHA512=18ed3b740ff1bba31949739203f12370ac1f9f1e17282d7bacc7871ca4bf1c6233298e6e7e87227d59e0f99677c6c7fe80a7a2ce71d5b370947d2aff409cd27e)
+set(FLAP_HASH              SHA512=fbfc1363da52670f680e8aafc6f14a4717349e8a9b697b0e078e654b56de56d1199bf577c31e562106ce61f853b19ab493980a1c926bbafa0eef9b2ad74879d6)
 
 ########
 # gFTL #
@@ -99,9 +99,9 @@ set(FARGPARSE_HASH         SHA512=84e1382d39b9a075d48b40ccd9879228d559c8c5ebbfd1
 # pFlogger #
 ############
 
-set(PFLOGGER_VERSION       v1.4.0)
+set(PFLOGGER_VERSION       v1.4.1)
 set(PFLOGGER_URL           https://github.com/Goddard-Fortran-Ecosystem/pFlogger/archive/${PFLOGGER_VERSION}.tar.gz)
-set(PFLOGGER_HASH          SHA512=bd1b903dee6ca0272a39c0037d516f8e2c8114a038f172c060ffd818276ef8fccf94e7a1f0ef651a9a0c8a7ae67513f6433e324710c94903677fbda56aa82d62)
+set(PFLOGGER_HASH          SHA512=d920b002fbfbfbf23613f5e0fda2edc2edb47e61e29d958853bd965a7284bcd6d4da54498bc98010bcca9047926099624926b3a13b510f145e8122f7b0597fbf)
 
 ###########
 # yaFyaml #

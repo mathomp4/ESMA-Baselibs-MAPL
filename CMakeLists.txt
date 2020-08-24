@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.15.5)
+cmake_minimum_required(VERSION 3.17)
 
 project(ESMA-Baselibs
-   VERSION 6.0.11
+   VERSION 6.0.14
    LANGUAGES Fortran C CXX
    )
 
@@ -45,9 +45,6 @@ if (BUILD_MPI)
 
    set(H5_PARALLEL --enable-parallel)
 
-   set(H5_C_COMPILER       ${CMAKE_INSTALL_PREFIX}/bin/h5pcc)
-   set(H5_Fortran_COMPILER ${CMAKE_INSTALL_PREFIX}/bin/h5pfc)
-
    set(NC_PAR_TESTS --enable-parallel-tests)
 
 else ()
@@ -56,9 +53,6 @@ else ()
    set(PARALLEL_Fortran_COMPILER ${CMAKE_Fortran_COMPILER})
 
    set(H5_PARALLEL --disable-parallel)
-
-   set(H5_C_COMPILER       ${CMAKE_INSTALL_PREFIX}/bin/h5cc)
-   set(H5_Fortran_COMPILER ${CMAKE_INSTALL_PREFIX}/bin/h5fc)
 
    set(NC_PAR_TESTS --disable-parallel-tests)
 
@@ -71,15 +65,29 @@ message(STATUS "Using ESMF_BOPT: ${ESMF_BOPT}")
 
 include(InstallDirectoryCheck)
 
-set(H4_C_COMPILER       ${CMAKE_INSTALL_PREFIX}/bin/h4cc-hdf4)
-set(H4_Fortran_COMPILER ${CMAKE_INSTALL_PREFIX}/bin/h4fc-hdf4)
-
 if (CMAKE_Fortran_COMPILER_ID MATCHES "NAG")
    set(HDF5_ENABLE_F2003 --disable-fortran2003)
    set(FORTRAN_PIC_FLAG -PIC)
+   set(HDF5_PATCH_COMMAND PATCH_COMMAND patch -p1 < ${PROJECT_SOURCE_DIR}/patches/hdf5/nag.configure.patch)
 else ()
    set(HDF5_ENABLE_F2003 --enable-fortran2003)
    set(FORTRAN_PIC_FLAG -fPIC)
+   unset(HDF5_PATCH_COMMAND)
+endif ()
+
+if (CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
+   if (CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10.1)
+
+      # Need to add special flags for gfortran 10 changes
+      set(ALLOW_ARGUMENT_MISMATCH "-fallow-argument-mismatch")
+      set(ALLOW_INVALID_BOZ "-fallow-invalid-boz")
+      set(ENV{ESMF_F90COMPILEOPTS} "${ALLOW_ARGUMENT_MISMATCH} ${ALLOW_INVALID_BOZ}")
+      message(STATUS "Setting ESMF_F90COMPILEOPTS: $ENV{ESMF_F90COMPILEOPTS}")
+
+      # nccmp does not build with GCC 10
+      message(WARNING "nccmp currently cannot build with GCC 10. Turning off build")
+      set(BUILD_NCCMP OFF)
+   endif ()
 endif ()
 
 set (BASELIBS_C_FLAGS "-fPIC")
@@ -263,6 +271,8 @@ ExternalProject_Add(hdf4
       CFLAGS=${BASELIBS_C_FLAGS}
       CXX=${SERIAL_CXX_COMPILER}
       FC=${SERIAL_Fortran_COMPILER}
+      "FFLAGS=${FORTRAN_PIC_FLAG} ${ALLOW_ARGUMENT_MISMATCH}"
+      "FCFLAGS=${FORTRAN_PIC_FLAG} ${ALLOW_ARGUMENT_MISMATCH}"
 
    BUILD_COMMAND $(MAKE)
 
@@ -291,6 +301,7 @@ set(HDF4_INCLUDE_DIR ${INSTALL_DIR}/include/hdf)
 FetchContent_Declare(hdf5
    URL      ${HDF5_URL}
    URL_HASH ${HDF5_HASH}
+   ${HDF5_PATCH_COMMAND}
 )
 FetchContent_GetProperties(hdf5)
 if(NOT hdf5_POPULATED)
@@ -416,7 +427,7 @@ ExternalProject_Add(netcdf
       CXX=${PARALLEL_CXX_COMPILER}
       FC=${PARALLEL_Fortran_COMPILER}
       "CPPFLAGS=${NETCDF_NEEDED_INCLUDES_STRING}"
-      "LDFLAGS=-L${CMAKE_INSTALL_PREFIX}/lib"
+      "LDFLAGS=-L${CMAKE_INSTALL_PREFIX}/lib -lsz ${CURL_LIBS}"
 
    BUILD_COMMAND $(MAKE)
 
@@ -460,8 +471,8 @@ ExternalProject_Add(netcdf-fortran
       ${NC_PAR_TESTS}
       CC=${PARALLEL_C_COMPILER}
       CFLAGS=${BASELIBS_C_FLAGS}
-      FFLAGS=${FORTRAN_PIC_FLAG}
-      FCFLAGS=${FORTRAN_PIC_FLAG}
+      "FFLAGS=${FORTRAN_PIC_FLAG} ${ALLOW_ARGUMENT_MISMATCH}"
+      "FCFLAGS=${FORTRAN_PIC_FLAG} ${ALLOW_ARGUMENT_MISMATCH}"
       CXX=${PARALLEL_CXX_COMPILER}
       FC=${PARALLEL_Fortran_COMPILER}
       "CPPFLAGS=-I${NETCDF_INCLUDE_DIR} ${NETCDF_NEEDED_INCLUDES_STRING}"
@@ -488,7 +499,7 @@ ExternalProject_Add(netcdf-fortran
 
 FetchContent_Declare(flap
    GIT_REPOSITORY https://github.com/mathomp4/FLAP.git
-   GIT_TAG        geos/v1.5.0
+   GIT_TAG        geos/v1.9.0
    GIT_SHALLOW    TRUE
    GIT_PROGRESS   TRUE
 )

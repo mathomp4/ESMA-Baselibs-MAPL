@@ -56,12 +56,12 @@ compiler and MPI stack and will set `ESMF_BOPT=O`.
 | [netCDF Fortran](https://github.com/Unidata/netcdf-fortran)             | 4.5.2       |
 | [HDF5](https://portal.hdfgroup.org/display/support)                     | 1.10.6      |
 | [HDF4](https://portal.hdfgroup.org/display/support)                     | 4.2.15      |
-| [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)           | v4.1.7      |
+| [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)           | v4.1.11     |
 | [gFTL](https://github.com/Goddard-Fortran-Ecosystem/gFTL)               | v1.2.5      |
-| [gFTL-shared](https://github.com/Goddard-Fortran-Ecosystem/gFTL-shared) | v1.0.2      |
-| [fArgParse](https://github.com/Goddard-Fortran-Ecosystem/fArgParse)     | v0.9.3      |
-| [pFlogger](https://github.com/Goddard-Fortran-Ecosystem/pFlogger)       | v1.4.1      |
-| [yaFyaml](https://github.com/Goddard-Fortran-Ecosystem/yaFyaml)         | v0.3.1      |
+| [gFTL-shared](https://github.com/Goddard-Fortran-Ecosystem/gFTL-shared) | v1.0.7      |
+| [fArgParse](https://github.com/Goddard-Fortran-Ecosystem/fArgParse)     | v0.9.5      |
+| [yaFyaml](https://github.com/Goddard-Fortran-Ecosystem/yaFyaml)         | v0.4.0      |
+| [pFlogger](https://github.com/Goddard-Fortran-Ecosystem/pFlogger)       | v1.4.3      |
 | [FLAP](https://github.com/mathomp4/FLAP)                                | geos/v1.9.0 |
 | [jpeg](http://www.ijg.org/)                                             | 9c          |
 | [zlib](http://www.zlib.net/)                                            | 1.2.11      |

@@ -2,6 +2,39 @@
 
 ## [Unreleased]
 
+## [6.0.14] - 2020-08-12
+
+### Updates
+
+* cURL 7.71.1
+* NCO 4.9.3
+* pFUnit v4.1.11
+* pFlogger v1.4.3
+* yaFyaml v0.4.0
+
+### Changed
+
+* Download URLs for HDF-EOS2, HDF-EOS5, and SDP Toolkit have changed due to changes in hosting.
+
+## [6.0.13] - 2020-05-22
+
+### Updates
+
+* ESMF 8.0.1
+* gFTL-shared v1.0.7
+* pFUnit v4.1.8
+* pFlogger v1.4.2
+* fArgParse v0.9.5
+* yaFyaml v0.3.3
+
+### Fixed
+
+* Fixes for GCC 10
+  * Added patch for netcdf issue with GCC 10
+  * Added flag for HDF4 when using GCC 10
+  * Need to pass in extra flags to ESMF when using GCC 10
+* Fix for detection for `--enable-dap` with netcdf
+
 ### Updates
 
 * Move to use ESMF GitHub repo

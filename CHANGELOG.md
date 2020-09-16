@@ -39,6 +39,10 @@
 
 * Move to use ESMF GitHub repo
 
+### Removed
+
+* Removed patching of ESMF with move to snapshot 13
+
 ## [6.0.12] - 2020-05-01
 
 ### Updates
